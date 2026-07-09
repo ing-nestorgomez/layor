@@ -4,7 +4,7 @@ email: info@miempresa.com
 description: >-
   Descripción de tu empresa para SEO y meta tags.
 baseurl: "" # Deja vacío para GitHub Pages
-url: "https://ing-nestorgomez.github.io/tu-repositorio" # URL de tu sitio
+url: "https://ing-nestorgomez.github.io/layor" # URL de tu sitio
 
 # Configuración de construcción
 markdown: kramdown
