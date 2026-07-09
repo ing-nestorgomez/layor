@@ -1,38 +1,39 @@
 // ============================================
-// MENÚ HAMBURGUESA - Toggle para móviles
+// OCULTAR BARRA AMARILLA AL HACER SCROLL
 // ============================================
 
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.querySelector('.main-nav');
+const yellowBar = document.getElementById('yellowBar');
+let lastScrollY = window.scrollY;
+let scrollTimeout;
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-    });
+function handleScroll() {
+    const currentScrollY = window.scrollY;
+    
+    // Si el scroll es mayor a 50px, oculta la barra amarilla
+    if (currentScrollY > 50) {
+        yellowBar.classList.add('hidden');
+    } else {
+        yellowBar.classList.remove('hidden');
+    }
+    
+    lastScrollY = currentScrollY;
 }
 
-// ============================================
-// EFECTO DE SCROLL EN EL HEADER
-// ============================================
-
-const header = document.querySelector('.site-header');
-
+// Usamos throttle para mejorar el rendimiento
+let ticking = false;
 window.addEventListener('scroll', function() {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+            handleScroll();
+            ticking = false;
+        });
+        ticking = true;
     }
 });
 
 // ============================================
-// CIERRE DEL MENÚ AL HACER CLIC EN UN ENLACE
+// MENÚ HAMBURGUESA (Para móviles)
 // ============================================
 
-document.querySelectorAll('.main-nav ul li a').forEach(link => {
-    link.addEventListener('click', function() {
-        if (window.innerWidth <= 768) {
-            mainNav.classList.remove('active');
-        }
-    });
-});
+// Si necesitas menú hamburguesa en el futuro, puedes agregarlo aquí
+// Por ahora, el menú se muestra directamente en la barra amarilla
