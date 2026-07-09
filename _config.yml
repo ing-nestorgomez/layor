@@ -3,8 +3,8 @@ title: Caribe Royal Petrol
 email: info@cariberoyalpetrol.com
 description: >-
   Descripción de tu empresa para SEO y meta tags.
-baseurl: "" # Deja vacío para GitHub Pages
-url: "https://ing-nestorgomez.github.io/layor" # URL de tu sitio
+baseurl: "/layor"
+url: "https://ing-nestorgomez.github.io"
 
 # Configuración de construcción
 markdown: kramdown
