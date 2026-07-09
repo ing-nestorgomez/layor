@@ -1,393 +1,95 @@
-/* --- RESET Y FUENTES --- */
+/* Variables de color */
+:root {
+  --color-black: #000000;
+  --color-gold: #c69c37; /* Tono extraído del logo de Royal */
+  --color-white: #ffffff;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #1a1a1a;
-    line-height: 1.6;
-    padding-top: 100px; /* Altura total de ambas barras */
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lora', serif;
-    font-weight: 600;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* ============================================
-   DOBLE BARRA TOP
-   ============================================ */
-
-/* --- BARRA NEGRA FIJA (Siempre visible) --- */
-.top-bar-black {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #0a0a0a;
-    z-index: 1001;
-    padding: 12px 0;
-    border-bottom: 2px solid #f5c518;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+/* --- ESTILOS DEL HEADER --- */
+.site-header {
+  width: 100%;
 }
 
-.top-bar-black .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 40px;
+.header-black-bar {
+  background-color: var(--color-black);
+  padding: 15px 0;
 }
 
-/* Logo */
-.logo-container {
-    display: flex;
-    align-items: center;
+.header-black-bar .site-logo img {
+  height: 55px; /* Ajuste para el logo SVG */
+  display: block;
 }
 
-.logo-image {
-    height: 45px;
-    width: auto;
-    display: block;
+.header-gold-bar {
+  background-color: var(--color-gold);
+  padding: 8px 0;
+  text-align: center;
 }
 
-/* Espaciador para mantener alineación */
-.menu-spacer {
-    flex: 1;
-}
-
-/* --- BARRA AMARILLA (Se oculta al scroll) --- */
-.top-bar-yellow {
-    position: fixed;
-    top: 68px; /* Debajo de la barra negra */
-    left: 0;
-    width: 100%;
-    background: #f5c518;
-    z-index: 1000;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Ocultar la barra amarilla al hacer scroll */
-.top-bar-yellow.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-}
-
-.top-bar-yellow .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Menú de navegación en barra amarilla */
 .nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 48px;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  display: inline-flex;
+  gap: 20px;
 }
 
 .nav-menu li a {
-    text-decoration: none;
-    color: #0a0a0a;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    padding: 4px 0;
-    transition: all 0.3s ease;
-    border-bottom: 2px solid transparent;
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .nav-menu li a:hover {
-    color: #0033a0;
-    border-bottom-color: #0033a0;
+  text-decoration: underline;
 }
 
-.nav-menu li a.active {
-    color: #0033a0;
-    border-bottom-color: #0033a0;
+/* --- CUERPO PRINCIPAL --- */
+.site-content {
+  flex: 1;
+  background-color: #ffffff;
 }
 
-/* --- HEADER ORIGINAL (MANTENIDO PARA COMPATIBILIDAD) --- */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 2px solid #e8e8e8;
-    z-index: 1000;
-    padding: 12px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.site-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo a {
-    text-decoration: none;
-    font-family: 'Lora', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #0033a0;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 32px;
-}
-
-.main-nav ul li a {
-    text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.main-nav ul li a:hover,
-.main-nav ul li a.active {
-    color: #0033a0;
-}
-
-/* Menú hamburguesa */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: #1a1a1a;
-    border-radius: 3px;
-}
-
-/* --- HERO (Inicio) --- */
-.hero {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 80px 0;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 16px;
-}
-
-.hero-subtitle {
-    font-size: 1.25rem;
-    color: #4a4a4a;
-    margin-bottom: 32px;
-}
-
-.btn-primary {
-    display: inline-block;
-    background: #0033a0;
-    color: #ffffff;
-    padding: 12px 32px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: #002266;
-}
-
-/* --- FEATURES --- */
-.features {
-    padding: 60px 0;
-}
-
-.features h2 {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.feature-card {
-    background: #f8f9fa;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-
-.feature-card h3 {
-    margin-bottom: 12px;
-}
-
-/* --- MAIN CONTENT --- */
-.main-content {
-    padding: 40px 0 60px;
-}
-
-/* --- FOOTER --- */
+/* --- ESTILOS DEL FOOTER --- */
 .site-footer {
-    background: #0d0d0d;
-    color: #e0e0e0;
-    padding: 40px 0 16px;
+  margin-top: auto;
+  width: 100%;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid #2a2a2a;
+.footer-gold-bar {
+  background-color: var(--color-gold);
+  height: 12px;
 }
 
-.footer-col h4 {
-    color: #ffffff;
-    margin-bottom: 12px;
-    font-family: 'Lora', serif;
+.footer-black-bar {
+  background-color: var(--color-black);
+  padding: 25px 0;
+  text-align: center;
 }
 
-.footer-col ul {
-    list-style: none;
-}
-
-.footer-col ul li {
-    margin-bottom: 8px;
-}
-
-.footer-col ul li a {
-    color: #a0a0a0;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-col ul li a:hover {
-    color: #ffffff;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    color: #666;
-    font-size: 0.85rem;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-    body {
-        padding-top: 80px;
-    }
-    
-    .top-bar-black {
-        padding: 8px 0;
-    }
-    
-    .top-bar-black .container {
-        padding: 0 16px;
-        min-height: 32px;
-    }
-    
-    .logo-image {
-        height: 32px;
-    }
-    
-    .top-bar-yellow {
-        top: 50px;
-        padding: 4px 0;
-    }
-    
-    .top-bar-yellow .container {
-        padding: 0 16px;
-    }
-    
-    .nav-menu {
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .nav-menu li a {
-        font-size: 0.7rem;
-        letter-spacing: 0.3px;
-    }
-    
-    /* Menú hamburguesa (mantenido del original) */
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .main-nav {
-        display: none;
-    }
-    
-    .main-nav.active {
-        display: block;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        padding: 20px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-    
-    .main-nav.active ul {
-        flex-direction: column;
-        gap: 16px;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-menu {
-        gap: 12px;
-    }
-    
-    .nav-menu li a {
-        font-size: 0.65rem;
-        letter-spacing: 0.2px;
-    }
+.footer-black-bar p {
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
