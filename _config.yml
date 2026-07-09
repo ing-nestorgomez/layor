@@ -1,0 +1,22 @@
+# Configuración del sitio
+title: Mi Empresa
+email: info@miempresa.com
+description: >-
+  Descripción de tu empresa para SEO y meta tags.
+baseurl: "" # Deja vacío para GitHub Pages
+url: "https://ing-nestorgomez.github.io/tu-repositorio" # URL de tu sitio
+
+# Configuración de construcción
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Excluir archivos innecesarios
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
