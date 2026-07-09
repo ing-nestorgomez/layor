@@ -1,6 +1,9 @@
 ---
 ---
 
+/* Importación de tipografía corporativa moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 /* Colores institucionales */
 $color-black: #000000;
 $color-gold: #c69c37;
@@ -44,25 +47,55 @@ body {
 
 .header-gold-bar {
   background-color: $color-gold;
-  padding: 1px 0;
-  text-align: center;
+  padding: 10px 0; /* Incrementado sutilmente para dar aire al nuevo menú tipográfico */
+}
+
+.header-gold-bar .container {
+  display: flex;
+  justify-content: flex-end; /* Alinea el menú a la derecha logrando un balance premium con el logo */
 }
 
 .nav-menu {
   list-style: none;
-  display: inline-flex;
-  gap: 20px;
+  display: flex;
+  gap: 30px; /* Mayor separación entre elementos para tendencias de legibilidad actuales */
 }
 
 .nav-menu li a {
+  font-family: 'Inter', sans-serif;
   color: $color-white;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;           /* Tamaño reducido y controlado para verse minimalista */
+  font-weight: 600;           /* Peso semi-bold limpio y nítido */
+  text-transform: uppercase;  /* Mayúsculas sostenidas institucionales */
+  letter-spacing: 1.5px;      /* Espaciado entre letras elegante */
+  opacity: 0.85;              /* Opacidad base sutil */
+  position: relative;
+  padding-bottom: 4px;
+  transition: opacity 0.3s ease;
+}
+
+/* Micro-interacción: Línea inferior animada fluida en lugar de subrayado tosco */
+.nav-menu li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $color-white;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 
 .nav-menu li a:hover {
-  text-decoration: underline;
+  opacity: 1; /* El texto enciende por completo al pasar el cursor */
+}
+
+.nav-menu li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 /* --- CUERPO PRINCIPAL --- */
