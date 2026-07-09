@@ -10,7 +10,7 @@ body {
     background-color: #ffffff;
     color: #1a1a1a;
     line-height: 1.6;
-    padding-top: 76px;
+    padding-top: 100px; /* Altura total de ambas barras */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,7 +24,108 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 20px;
 }
 
-/* --- HEADER --- */
+/* ============================================
+   DOBLE BARRA TOP
+   ============================================ */
+
+/* --- BARRA NEGRA FIJA (Siempre visible) --- */
+.top-bar-black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0a0a0a;
+    z-index: 1001;
+    padding: 12px 0;
+    border-bottom: 2px solid #f5c518;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.top-bar-black .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+/* Espaciador para mantener alineación */
+.menu-spacer {
+    flex: 1;
+}
+
+/* --- BARRA AMARILLA (Se oculta al scroll) --- */
+.top-bar-yellow {
+    position: fixed;
+    top: 68px; /* Debajo de la barra negra */
+    left: 0;
+    width: 100%;
+    background: #f5c518;
+    z-index: 1000;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Ocultar la barra amarilla al hacer scroll */
+.top-bar-yellow.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.top-bar-yellow .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Menú de navegación en barra amarilla */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 48px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #0a0a0a;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 0;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-menu li a:hover {
+    color: #0033a0;
+    border-bottom-color: #0033a0;
+}
+
+.nav-menu li a.active {
+    color: #0033a0;
+    border-bottom-color: #0033a0;
+}
+
+/* --- HEADER ORIGINAL (MANTENIDO PARA COMPATIBILIDAD) --- */
 .site-header {
     position: fixed;
     top: 0;
@@ -201,8 +302,48 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.85rem;
 }
 
-/* --- RESPONSIVE --- */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+    
+    .top-bar-black {
+        padding: 8px 0;
+    }
+    
+    .top-bar-black .container {
+        padding: 0 16px;
+        min-height: 32px;
+    }
+    
+    .logo-image {
+        height: 32px;
+    }
+    
+    .top-bar-yellow {
+        top: 50px;
+        padding: 4px 0;
+    }
+    
+    .top-bar-yellow .container {
+        padding: 0 16px;
+    }
+    
+    .nav-menu {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
+    }
+    
+    /* Menú hamburguesa (mantenido del original) */
     .menu-toggle {
         display: flex;
     }
@@ -237,5 +378,16 @@ h1, h2, h3, h4, h5, h6 {
     
     .footer-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        gap: 12px;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.65rem;
+        letter-spacing: 0.2px;
     }
 }
