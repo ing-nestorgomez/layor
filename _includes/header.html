@@ -1,30 +1,19 @@
-<!-- ============================================
-     DOBLE BARRA TOP
-     - Barra negra (gruesa, fija) con logo
-     - Barra amarilla (delgada, se oculta al scroll) con menú
-     ============================================ -->
-
-<!-- BARRA NEGRA FIJA (Siempre visible) -->
-<header class="top-bar-black">
+<header class="site-header">
+  <div class="header-black-bar">
     <div class="container">
-        <!-- Logo a la izquierda -->
-        <div class="logo-container">
-            <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Caribe Royal Petrol" class="logo-image">
-        </div>
-        
-        <!-- Espacio para el menú (se muestra en la barra amarilla) -->
-        <div class="menu-spacer"></div>
+      <a href="{{ '/' | relative_url }}" class="site-logo">
+        <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Royal Caribe Petrol">
+      </a>
     </div>
+  </div>
+  <nav class="header-gold-bar">
+    <div class="container">
+      <ul class="nav-menu">
+        <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
+        <li><a href="{{ '/about.html' | relative_url }}">Nosotros</a></li>
+        <li><a href="{{ '/services.html' | relative_url }}">Galería</a></li>
+        <li><a href="{{ '/contact.html' | relative_url }}">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>
-
-<!-- BARRA AMARILLA (Se oculta al hacer scroll) -->
-<nav class="top-bar-yellow" id="yellowBar">
-    <div class="container">
-        <ul class="nav-menu">
-            <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Inicio</a></li>
-            <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains 'about' %}class="active"{% endif %}>Nosotros</a></li>
-            <li><a href="{{ '/services/' | relative_url }}" {% if page.url contains 'services' %}class="active"{% endif %}>Servicios</a></li>
-            <li><a href="{{ '/contact/' | relative_url }}" {% if page.url contains 'contact' %}class="active"{% endif %}>Contacto</a></li>
-        </ul>
-    </div>
-</nav>
