@@ -8,7 +8,7 @@ url: "https://ing-nestorgomez.github.io/layor" # URL de tu sitio
 
 # Configuración de construcción
 markdown: kramdown
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
