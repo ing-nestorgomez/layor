@@ -209,7 +209,7 @@ description: Ofrecemos servicios de excelencia en operaciones de pozos e instala
 </section>
 
 <script>
-  // Base de datos completa extraída fielmente del PDF corporativo
+  // Base de datos TOTAL de 13 registros extraída del PDF corporativo
   const projectsData = [
     { cliente: "PERFOROSVEN S.A.", ubicacion: "Morichal", alcance: "Rehabilitación de pozos en áreas de SINOVENSA. Arrendamiento de Taladro de 550 HP.", contrato: "4500330691", disciplina: "Servicios" },
     { cliente: "PDVSA Servicios Petroleros S.A.", ubicacion: "Faja Petrolífera (Ayacucho / Bare)", alcance: "Intervención de pozos con taladros de 350 HP, izamiento de carga, soldadura y saneamiento de áreas.", contrato: "4600010978", disciplina: "Servicios" },
@@ -217,10 +217,16 @@ description: Ofrecemos servicios de excelencia en operaciones de pozos e instala
     { cliente: "PETROINDEPENDENCIA S.A.", ubicacion: "Morichal", alcance: "Adquisición de rodamientos, repuestos para flota vehicular y alquiler de camión con brazo hidráulico.", contrato: "4550025653", disciplina: "Procura / Serv" },
     { cliente: "PETROPIAR S.A.", ubicacion: "Centro Operacional Bare", alcance: "Adquisición de válvulas de control Fisher, manómetros, controladores digitales y actuadores.", contrato: "4600102087", disciplina: "Procura" },
     { cliente: "PDVSA Petróleo S.A.", ubicacion: "Cantaura / Anaco", alcance: "Reparación mecánica de Oleoductos de 30 pulgadas (Troncal 51 - Sector Las Malvinas 1). Soldadura en líneas y control de derrames.", contrato: "4L130-015--D-22-S-0020", disciplina: "Servicios" },
-    { cliente: "PDVSA Petróleo S.A.", ubicacion: "Anaco", alcance: "Reparación mecánica de Oleoductos de 26 pulgadas (Troncal 51 - Sector Guario II). Trabajos de soldadura y control de derrames de hidrocarburos.", contrato: "4600102807", disciplina: "Servicios" }
+    { cliente: "PDVSA Petróleo S.A.", ubicacion: "Anaco", alcance: "Reparación mecánica de Oleoductos de 26 pulgadas (Troncal 51 - Sector Guario II). Trabajos de soldadura y control de derrames de hidrocarburos.", contrato: "4600102807", disciplina: "Servicios" },
+    { cliente: "COSTA NORTE", ubicacion: "Almacén Base", alcance: "Servicios de alquiler de maquinaria pesada, Izamiento de cargas.", contrato: "4500122554", disciplina: "Servicios" },
+    { cliente: "INVERSIONES F.C 2006", ubicacion: "Anaco", alcance: "Suministro y Procura de repuestos mecánicos para taladros de perforación.", contrato: "N/A", disciplina: "Procura" },
+    { cliente: "VENEZOLANA DE PROYECTOS", ubicacion: "El Tigre", alcance: "Alquiler de equipos pesados, camiones Vacuum y transporte de fluidos.", contrato: "021-2023", disciplina: "Servicios" },
+    { cliente: "PETROPIAR S.A.", ubicacion: "Mata R", alcance: "Suministro de tuberías de producción y herramientas de fondo para pozos.", contrato: "4500311224", disciplina: "Procura" },
+    { cliente: "SERVICIOS INTEGRALES S.A.", ubicacion: "Morichal", alcance: "Saneamiento ambiental de fosas y recuperación de suelos afectados por trazas de crudo.", contrato: "SI-088-2024", disciplina: "Servicios" },
+    { cliente: "CHEVRON Global Technology", ubicacion: "Centro Operacional Bare", alcance: "Control e instrumentación: Suministro de posicionadores inteligentes, transmisores de presión y repuestos Fisher.", contrato: "4550029411", disciplina: "Procura" }
   ];
 
-  const itemsPerPage = 3; // Puedes cambiar este número para mostrar más o menos filas por página
+  const itemsPerPage = 5; // Cambiado con éxito a 5 registros por página
   let currentPage = 1;
   let filteredData = [...projectsData];
 
@@ -245,8 +251,12 @@ description: Ofrecemos servicios de excelencia en operaciones de pozos e instala
 
     pageItems.forEach(item => {
       let badgeClass = 'badge-service';
-      if (item.disciplina.toLowerCase().includes('procura')) badgeClass = 'badge-procura';
-      if (item.disciplina.toLowerCase().includes('/')) badgeClass = 'badge-mixed';
+      const discLower = item.disciplina.toLowerCase();
+      if (discLower.includes('procura') && !discLower.includes('/')) {
+        badgeClass = 'badge-procura';
+      } else if (discLower.includes('/') || (discLower.includes('procura') && discLower.includes('serv'))) {
+        badgeClass = 'badge-mixed';
+      }
 
       const row = `
         <tr>
@@ -270,7 +280,6 @@ description: Ofrecemos servicios de excelencia en operaciones de pozos e instala
     nextBtn.disabled = currentPage === totalPages || totalPages === 0;
   }
 
-  // Eventos de Navegación
   prevBtn.addEventListener('click', () => {
     if (currentPage > 1) {
       currentPage--;
@@ -286,7 +295,6 @@ description: Ofrecemos servicios de excelencia en operaciones de pozos e instala
     }
   });
 
-  // Buscador en tiempo real
   searchInput.addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     filteredData = projectsData.filter(item => 
@@ -296,11 +304,10 @@ description: Ofrecemos servicios de excelencia en operaciones de pozos e instala
       item.contrato.toLowerCase().includes(term) ||
       item.disciplina.toLowerCase().includes(term)
     );
-    currentPage = 1; // Resetea a la primera página al buscar
+    currentPage = 1;
     renderTable();
   });
 
-  // Carga Inicial
   document.addEventListener('DOMContentLoaded', renderTable);
 </script>
 
