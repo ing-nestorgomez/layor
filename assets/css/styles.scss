@@ -603,3 +603,77 @@ body {
     letter-spacing: 0.5px;
   }
 }
+
+/* --- CONTROLES DE LA TABLA Y PAGINACIÓN --- */
+.crp-table-controls {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+
+  input {
+    width: 100%;
+    max-width: 350px;
+    background-color: $color-card-bg;
+    border: 1px solid rgba($color-white, 0.1);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: $color-white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: $transition-smooth;
+
+    &:focus {
+      outline: none;
+      border-color: $color-gold;
+      box-shadow: 0 0 10px rgba($color-gold, 0.2);
+    }
+  }
+}
+
+.crp-pagination {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  span {
+    font-size: 0.9rem;
+    color: $color-text-muted;
+    font-weight: 500;
+  }
+
+  button {
+    background-color: $color-card-bg;
+    color: $color-white;
+    border: 1px solid rgba($color-white, 0.1);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: $transition-smooth;
+
+    &:hover:not(:disabled) {
+      background-color: $color-gold;
+      color: $color-black;
+      border-color: $color-gold;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Formateo para la celda de Número de Contrato */
+.crp-custom-table td code {
+  background-color: rgba($color-black, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #e5e7eb;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
