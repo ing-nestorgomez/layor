@@ -677,3 +677,94 @@ body {
   font-family: monospace;
   font-size: 0.85rem;
 }
+
+/* --- SECCIÓN CLIENTES (INFINITE MARQUEE) --- */
+.crp-clients {
+  padding: 60px 0 80px 0;
+  background: rgba($color-black, 0.1);
+  overflow: hidden; /* Evita scrolls raros en la pantalla */
+}
+
+/* Envoltura con degradados transparentes en los bordes para un look cinematográfico */
+.crp-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+
+  /* Máscaras transparentes a los lados */
+  &::before, &::after {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, $color-dark-bg 0%, transparent 100%);
+  }
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, $color-dark-bg 0%, transparent 100%);
+  }
+}
+
+/* Pista de animación que moverá los elementos */
+.crp-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 60px; /* Distancia entre logos */
+  animation: scrollMarquee 25s linear infinite;
+
+  /* Pausa el carrusel sutilmente al pasar el mouse por encima */
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Cada celda de logo */
+.crp-marquee-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 60px;
+  color: $color-white;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  opacity: 0.4; /* Se muestran atenuados por defecto */
+  transition: $transition-smooth;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Fuerza a que los logos de color sean blancos */
+    transition: $transition-smooth;
+  }
+
+  &:hover {
+    opacity: 1; /* Iluminación premium al pasar el cursor */
+    color: $color-gold;
+    transform: scale(1.05);
+
+    img {
+      filter: none; /* Recupera su color original si lo deseas en el hover */
+    }
+  }
+}
+
+/* Animación pura en CSS a nivel de hardware (Performance fluido) */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Mueve la pista exactamente la mitad de su tamaño total */
+    transform: translateX(calc(-50% - 30px)); 
+  }
+}
