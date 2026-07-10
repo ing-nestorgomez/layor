@@ -2,12 +2,19 @@
 ---
 
 /* Importación de tipografía corporativa moderna */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Colores institucionales */
+/* Colores institucionales y variables del sistema */
 $color-black: #000000;
 $color-gold: #c69c37;
+$color-gold-hover: #bfa030;
 $color-white: #ffffff;
+
+$color-dark-bg: #11141a;       /* Fondo industrial oscuro premium */
+$color-card-bg: #1c212c;       /* Fondo para tarjetas / contenedores */
+$color-text-muted: #9ca3af;    /* Texto secundario atenuado */
+$radius-modern: 12px;
+$transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 * {
   box-sizing: border-box;
@@ -16,18 +23,25 @@ $color-white: #ffffff;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif; /* Tipografía moderna globalizada */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: $color-dark-bg; /* Fondo global oscuro para contraste premium */
+  color: $color-white;
 }
 
+/* Contenedor utilitario */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* Reutilización del contenedor para las nuevas secciones */
+.crp-container {
+  @extend .container;
 }
 
 /* --- ESTILOS DEL HEADER --- */
@@ -38,70 +52,532 @@ body {
 .header-black-bar {
   background-color: $color-black;
   padding: 5px 0;
-}
-
-.header-black-bar .site-logo img {
-  height: 55px;
-  display: block;
+  
+  .site-logo img {
+    height: 55px;
+    display: block;
+  }
 }
 
 .header-gold-bar {
   background-color: $color-gold;
-  padding: 1px 0 4px 0; /* Incrementado sutilmente para dar aire al nuevo menú tipográfico */
-}
+  padding: 1px 0 4px 0;
 
-.header-gold-bar .container {
-  display: flex;
-  justify-content: flex-end; /* Alinea el menú a la derecha logrando un balance premium con el logo */
+  .container {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .nav-menu {
   list-style: none;
   display: flex;
-  gap: 30px; /* Mayor separación entre elementos para tendencias de legibilidad actuales */
+  gap: 30px;
+
+  li a {
+    font-family: 'Inter', sans-serif;
+    color: $color-white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.85;
+    position: relative;
+    padding-bottom: 4px;
+    transition: opacity 0.3s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: $color-white;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover {
+      opacity: 1;
+      &::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+  }
 }
 
-.nav-menu li a {
-  font-family: 'Inter', sans-serif;
-  color: $color-white;
-  text-decoration: none;
-  font-size: 12px;           /* Tamaño reducido y controlado para verse minimalista */
-  font-weight: 600;           /* Peso semi-bold limpio y nítido */
-  text-transform: uppercase;  /* Mayúsculas sostenidas institucionales */
-  letter-spacing: 1.5px;      /* Espaciado entre letras elegante */
-  opacity: 0.85;              /* Opacidad base sutil */
-  position: relative;
-  padding-bottom: 4px;
-  transition: opacity 0.3s ease;
-}
-
-/* Micro-interacción: Línea inferior animada fluida en lugar de subrayado tosco */
-.nav-menu li a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: $color-white;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.nav-menu li a:hover {
-  opacity: 1; /* El texto enciende por completo al pasar el cursor */
-}
-
-.nav-menu li a:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-/* --- CUERPO PRINCIPAL --- */
+/* --- CUERPO PRINCIPAL (.site-content) --- */
 .site-content {
   flex: 1;
-  background-color: #ffffff;
+  background-color: $color-dark-bg;
+}
+
+/* --- NUEVOS ESTILOS COMPONENTES: CARIBE ROYAL PETROL --- */
+
+/* Encabezados de Sección Comunes */
+.crp-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+
+  h2 {
+    font-size: 2.2rem;
+    color: $color-white;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: $color-gold;
+      margin: 8px auto 0 auto;
+      border-radius: 2px;
+    }
+  }
+
+  .crp-subtitle {
+    color: $color-text-muted;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* Botonera Moderna */
+.crp-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: $radius-modern;
+  transition: $transition-smooth;
+  text-decoration: none;
+  text-align: center;
+
+  &-primary {
+    background-color: $color-gold;
+    color: $color-black;
+    &:hover {
+      background-color: $color-gold-hover;
+      transform: translateY(-2px);
+    }
+  }
+
+  &-secondary {
+    background-color: transparent;
+    color: $color-white;
+    border: 1px solid rgba($color-white, 0.2);
+    &:hover {
+      background-color: rgba($color-white, 0.05);
+      border-color: rgba($color-white, 0.4);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* 1. HERO SECTION */
+.crp-hero {
+  padding: 80px 0;
+  background: radial-gradient(circle at top right, rgba($color-gold, 0.08), transparent 45%);
+
+  &-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+
+  &-text {
+    .crp-tagline {
+      color: $color-gold;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+      
+      @media (min-width: 768px) {
+        font-size: 3.5rem;
+      }
+    }
+
+    p {
+      color: $color-text-muted;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+/* Cajas de Placeholders Genéricos (Imágenes y Galería) */
+.crp-placeholder-box {
+  background: $color-card-bg;
+  border: 2px dashed rgba($color-white, 0.15);
+  border-radius: $radius-modern;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $color-text-muted;
+  text-align: center;
+  padding: 20px;
+  transition: $transition-smooth;
+
+  .crp-icon-placeholder {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  span {
+    font-size: 0.9rem;
+    margin-top: 4px;
+    color: $color-white;
+  }
+}
+
+/* 2. IDENTIDAD / NOSOTROS */
+.crp-about {
+  padding: 60px 0;
+  background-color: rgba($color-black, 0.2);
+}
+
+.crp-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.crp-card-mv {
+  background: $color-card-bg;
+  padding: 40px 32px;
+  border-radius: $radius-modern;
+  border: 1px solid rgba($color-white, 0.05);
+  transition: $transition-smooth;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba($color-gold, 0.3);
+    box-shadow: 0 10px 30px rgba($color-black, 0.5);
+  }
+
+  .crp-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+    color: $color-white;
+  }
+
+  p {
+    color: $color-text-muted;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+}
+
+/* 3. SERVICIOS */
+.crp-services {
+  padding: 80px 0;
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+}
+
+.crp-service-box {
+  background: $color-card-bg;
+  padding: 35px;
+  border-radius: $radius-modern;
+  border: 1px solid rgba($color-white, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: $transition-smooth;
+
+  &:hover {
+    border-color: rgba($color-gold, 0.25);
+    transform: translateY(-3px);
+    
+    .crp-srv-number {
+      color: rgba($color-gold, 0.08);
+    }
+  }
+
+  .crp-srv-number {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 6rem;
+    font-weight: 800;
+    color: rgba($color-white, 0.02);
+    user-select: none;
+    transition: $transition-smooth;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+    color: $color-gold;
+    padding-right: 40px;
+  }
+
+  p {
+    color: $color-white;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  ul {
+    list-style: none;
+    
+    li {
+      color: $color-text-muted;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 18px;
+
+      &::before {
+        content: '▪';
+        position: absolute;
+        left: 0;
+        color: $color-gold;
+      }
+    }
+  }
+}
+
+/* 4. SECCIÓN FLOTA (TAGS INDUSTRIALES) */
+.crp-fleet {
+  padding: 60px 0;
+  background: rgba($color-black, 0.3);
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+
+    span {
+      background: $color-card-bg;
+      color: $color-white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba($color-white, 0.06);
+      transition: $transition-smooth;
+
+      &:hover {
+        background: transparent;
+        border-color: $color-gold;
+        color: $color-gold;
+      }
+    }
+  }
+}
+
+/* 5. GALERÍA */
+.crp-gallery {
+  padding: 80px 0;
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  &-item {
+    &:hover .crp-placeholder-box {
+      border-color: $color-gold;
+      background: rgba($color-card-bg, 0.7);
+    }
+  }
+}
+
+/* 6. TABLA DE PROYECTOS */
+.crp-projects {
+  padding: 60px 0;
+  background: rgba($color-black, 0.2);
+}
+
+.crp-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: $radius-modern;
+  border: 1px solid rgba($color-white, 0.08);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.crp-custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+  min-width: 700px;
+
+  th, td {
+    padding: 18px 24px;
+  }
+
+  th {
+    background-color: $color-black;
+    color: $color-gold;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba($color-white, 0.1);
+  }
+
+  td {
+    background-color: $color-card-bg;
+    color: $color-text-muted;
+    border-bottom: 1px solid rgba($color-white, 0.05);
+
+    strong {
+      color: $color-white;
+    }
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba($color-white, 0.02);
+  }
+}
+
+/* Badges de Disciplinas */
+.crp-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &.badge-service { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+  &.badge-procura { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+  &.badge-mixed   { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+}
+
+/* 7. CONTACTO */
+.crp-contact {
+  padding: 80px 0;
+
+  &-card {
+    background: linear-gradient(135deg, $color-card-bg 0%, #151922 100%);
+    border-radius: $radius-modern;
+    padding: 40px;
+    border: 1px solid rgba($color-white, 0.05);
+    
+    @media (min-width: 768px) {
+      padding: 60px;
+    }
+  }
+
+  &-info {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: $color-white;
+    }
+
+    p {
+      color: $color-text-muted;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+    }
+  }
+
+  &-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+
+    .crp-c-icon {
+      font-size: 1.8rem;
+      background: rgba($color-gold, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+      line-height: 1;
+    }
+
+    div {
+      strong {
+        display: block;
+        color: $color-gold;
+        font-size: 1rem;
+        margin-bottom: 6px;
+      }
+      p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: $color-text-muted;
+        line-height: 1.5;
+      }
+      a {
+        color: var(--color-white);
+        text-decoration: none;
+        transition: $transition-smooth;
+        &:hover {
+          color: $color-gold;
+        }
+      }
+    }
+  }
 }
 
 /* --- ESTILOS DEL FOOTER --- */
@@ -119,11 +595,11 @@ body {
   background-color: $color-black;
   padding: 25px 0;
   text-align: center;
-}
 
-.footer-black-bar p {
-  color: $color-white;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
+  p {
+    color: $color-white;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
 }
