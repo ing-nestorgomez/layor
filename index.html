@@ -173,65 +173,136 @@ description: Ofrecemos servicios de excelencia en operaciones de pozos e instala
   </section>
 
   <!-- SECCIÓN: Proyectos Ejecutados -->
-  <section class="crp-projects">
-    <div class="crp-container">
-      <div class="crp-section-header">
-        <h2>Experiencia Comprobada</h2>
-        <p class="crp-subtitle">Historial de proyectos exitosos y contratos ejecutados con rigurosidad técnica</p>
-      </div>
-
-      <div class="crp-table-responsive">
-        <table class="crp-custom-table">
-          <thead>
-            <tr>
-              <th>Cliente</th>
-              <th>Ubicación</th>
-              <th>Alcance / Contrato</th>
-              <th>Disciplina</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>PERFOROSVEN S.A.</strong></td>
-              <td>Morichal</td>
-              <td>Rehabilitación de pozos en áreas de SINOVENSA. Arrendamiento de Taladro de 550 HP.</td>
-              <td><span class="crp-badge badge-service">Servicios</span></td>
-            </tr>
-            <tr>
-              <td><strong>PDVSA Servicios Petroleros S.A.</strong></td>
-              <td>Faja Petrolífera (Ayacucho / Bare)</td>
-              <td>Intervención de pozos con taladros de 350 HP, izamiento de carga, soldadura y saneamiento de áreas.</td>
-              <td><span class="crp-badge badge-service">Servicios</span></td>
-            </tr>
-            <tr>
-              <td><strong>CHEVRON Global Technology</strong></td>
-              <td>Almacén Base</td>
-              <td>Suministro de equipos, procura y entrega de motores eléctricos de 75 HP.</td>
-              <td><span class="crp-badge badge-procura">Procura</span></td>
-            </tr>
-            <tr>
-              <td><strong>PETROINDEPENDENCIA S.A.</strong></td>
-              <td>Morichal</td>
-              <td>Adquisición de rodamientos, repuestos para flota vehicular y alquiler de camión con brazo hidráulico.</td>
-              <td><span class="crp-badge badge-mixed">Procura / Serv</span></td>
-            </tr>
-            <tr>
-              <td><strong>PETROPIAR S.A.</strong></td>
-              <td>Centro Operacional Bare</td>
-              <td>Adquisición de válvulas de control Fisher, manómetros, controladores digitales y actuadores.</td>
-              <td><span class="crp-badge badge-procura">Procura</span></td>
-            </tr>
-            <tr>
-              <td><strong>PDVSA Petróleo S.A.</strong></td>
-              <td>Cantaura / Anaco</td>
-              <td>Reparación mecánica de Oleoductos de 30 y 26 pulgadas (Troncal 51). Soldadura en líneas y control de derrames.</td>
-              <td><span class="crp-badge badge-service">Servicios</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+ <section class="crp-projects">
+  <div class="crp-container">
+    <div class="crp-section-header">
+      <h2>Experiencia Comprobada</h2>
+      <p class="crp-subtitle">Historial completo de proyectos y contratos ejecutados con rigurosidad técnica</p>
     </div>
-  </section>
+
+    <div class="crp-table-controls">
+      <input type="text" id="crpProjectSearch" placeholder="🔍 Buscar por cliente, ubicación o disciplina...">
+    </div>
+
+    <div class="crp-table-responsive">
+      <table class="crp-custom-table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Ubicación</th>
+            <th>Alcance / Contrato</th>
+            <th>N° Contrato</th>
+            <th>Disciplina</th>
+          </tr>
+        </thead>
+        <tbody id="crpTableBody">
+          </tbody>
+      </table>
+    </div>
+
+    <div class="crp-pagination" id="crpPaginationControls">
+      <button id="crpPrevPage" disabled>Anterior</button>
+      <span id="crpPageIndicator">Página 1 de 1</span>
+      <button id="crpNextPage">Siguiente</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Base de datos completa extraída fielmente del PDF corporativo
+  const projectsData = [
+    { cliente: "PERFOROSVEN S.A.", ubicacion: "Morichal", alcance: "Rehabilitación de pozos en áreas de SINOVENSA. Arrendamiento de Taladro de 550 HP.", contrato: "4500330691", disciplina: "Servicios" },
+    { cliente: "PDVSA Servicios Petroleros S.A.", ubicacion: "Faja Petrolífera (Ayacucho / Bare)", alcance: "Intervención de pozos con taladros de 350 HP, izamiento de carga, soldadura y saneamiento de áreas.", contrato: "4600010978", disciplina: "Servicios" },
+    { cliente: "CHEVRON Global Technology", ubicacion: "Almacén Base", alcance: "Suministro de equipos, procura y entrega de motores eléctricos de 75 HP.", contrato: "4550026212", disciplina: "Procura" },
+    { cliente: "PETROINDEPENDENCIA S.A.", ubicacion: "Morichal", alcance: "Adquisición de rodamientos, repuestos para flota vehicular y alquiler de camión con brazo hidráulico.", contrato: "4550025653", disciplina: "Procura / Serv" },
+    { cliente: "PETROPIAR S.A.", ubicacion: "Centro Operacional Bare", alcance: "Adquisición de válvulas de control Fisher, manómetros, controladores digitales y actuadores.", contrato: "4600102087", disciplina: "Procura" },
+    { cliente: "PDVSA Petróleo S.A.", ubicacion: "Cantaura / Anaco", alcance: "Reparación mecánica de Oleoductos de 30 pulgadas (Troncal 51 - Sector Las Malvinas 1). Soldadura en líneas y control de derrames.", contrato: "4L130-015--D-22-S-0020", disciplina: "Servicios" },
+    { cliente: "PDVSA Petróleo S.A.", ubicacion: "Anaco", alcance: "Reparación mecánica de Oleoductos de 26 pulgadas (Troncal 51 - Sector Guario II). Trabajos de soldadura y control de derrames de hidrocarburos.", contrato: "4600102807", disciplina: "Servicios" }
+  ];
+
+  const itemsPerPage = 3; // Puedes cambiar este número para mostrar más o menos filas por página
+  let currentPage = 1;
+  let filteredData = [...projectsData];
+
+  const tableBody = document.getElementById('crpTableBody');
+  const prevBtn = document.getElementById('crpPrevPage');
+  const nextBtn = document.getElementById('crpNextPage');
+  const pageIndicator = document.getElementById('crpPageIndicator');
+  const searchInput = document.getElementById('crpProjectSearch');
+
+  function renderTable() {
+    tableBody.innerHTML = '';
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const pageItems = filteredData.slice(startIndex, endIndex);
+
+    if (pageItems.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 30px;">No se encontraron resultados</td></tr>`;
+      updateControls(0);
+      return;
+    }
+
+    pageItems.forEach(item => {
+      let badgeClass = 'badge-service';
+      if (item.disciplina.toLowerCase().includes('procura')) badgeClass = 'badge-procura';
+      if (item.disciplina.toLowerCase().includes('/')) badgeClass = 'badge-mixed';
+
+      const row = `
+        <tr>
+          <td><strong>${item.cliente}</strong></td>
+          <td>${item.ubicacion}</td>
+          <td>${item.alcance}</td>
+          <td><code>${item.contrato}</code></td>
+          <td><span class="crp-badge ${badgeClass}">${item.disciplina}</span></td>
+        </tr>
+      `;
+      tableBody.insertAdjacentHTML('beforeend', row);
+    });
+
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    updateControls(totalPages);
+  }
+
+  function updateControls(totalPages) {
+    pageIndicator.textContent = `Página ${currentPage} de ${totalPages || 1}`;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+  }
+
+  // Eventos de Navegación
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable();
+    }
+  });
+
+  // Buscador en tiempo real
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    filteredData = projectsData.filter(item => 
+      item.cliente.toLowerCase().includes(term) ||
+      item.ubicacion.toLowerCase().includes(term) ||
+      item.alcance.toLowerCase().includes(term) ||
+      item.contrato.toLowerCase().includes(term) ||
+      item.disciplina.toLowerCase().includes(term)
+    );
+    currentPage = 1; // Resetea a la primera página al buscar
+    renderTable();
+  });
+
+  // Carga Inicial
+  document.addEventListener('DOMContentLoaded', renderTable);
+</script>
 
   <!-- SECCIÓN: Datos de Contacto -->
   <section id="contacto" class="crp-contact">
