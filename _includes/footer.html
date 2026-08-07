@@ -1,8 +1,16 @@
-<footer class="site-footer">
-  <div class="footer-gold-bar"></div>
-  <div class="footer-black-bar">
-    <div class="container">
-      <p>© 2026 Caribe Royal Petrol C.A.</p>
-    </div>
+<header class="site-header">
+  <div class="container header-content">
+    <a href="{{ '/' | relative_url }}" class="site-logo">
+      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Royal Caribe Petrol">
+    </a>
+    
+    <nav class="header-nav">
+      <ul class="nav-menu">
+        <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
+        <li><a href="{{ '/#nosotros' | relative_url }}">Nosotros</a></li>
+        <li><a href="{{ '/#servicios' | relative_url }}">Servicios</a></li>
+      </ul>
+      <a href="{{ '/#contacto' | relative_url }}" class="btn-header-contact">Contáctanos</a>
+    </nav>
   </div>
-</footer>
+</header>
