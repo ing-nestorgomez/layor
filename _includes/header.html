@@ -1,19 +1,16 @@
 <header class="site-header">
-  <div class="header-black-bar">
-    <div class="container">
-      <a href="{{ '/' | relative_url }}" class="site-logo">
-        <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Royal Caribe Petrol">
-      </a>
-    </div>
-  </div>
-  <nav class="header-gold-bar">
-    <div class="container">
+  <div class="container header-content">
+    <a href="{{ '/' | relative_url }}" class="site-logo">
+      <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Royal Caribe Petrol">
+    </a>
+    
+    <nav class="header-nav">
       <ul class="nav-menu">
         <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
         <li><a href="{{ '/#nosotros' | relative_url }}">Nosotros</a></li>
         <li><a href="{{ '/#servicios' | relative_url }}">Servicios</a></li>
-        <li><a href="{{ '/#contacto' | relative_url }}">Contacto</a></li>
       </ul>
-    </div>
-  </nav>
+      <a href="{{ '/#contacto' | relative_url }}" class="btn-header-contact">Contáctanos</a>
+    </nav>
+  </div>
 </header>
