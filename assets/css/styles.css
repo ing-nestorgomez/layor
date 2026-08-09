@@ -277,6 +277,178 @@ a {
 }
 
 /* ==========================================
+   SECCIÓN PROYECTOS Y TABLA (DISEÑO PDF)
+   ========================================== */
+.crp-projects {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.crp-section-header {
+  margin-bottom: 25px;
+}
+
+.crp-section-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.crp-subtitle {
+  color: var(--primary-gold);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 5px;
+}
+
+/* Buscador */
+.crp-table-controls {
+  margin-bottom: 20px;
+}
+
+.crp-table-controls input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--bg-card);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.crp-table-controls input:focus {
+  border-color: var(--primary-gold);
+}
+
+/* Contenedor y Tabla */
+.crp-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.crp-custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Separa las filas como tarjetas */
+  font-family: var(--font-main);
+}
+
+/* Encabezado de la Tabla */
+.crp-custom-table thead tr {
+  background-color: #e2e8f0; /* Fondo gris claro como la imagen */
+}
+
+.crp-custom-table th {
+  color: #718096; /* Texto gris de los títulos */
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  text-align: left;
+  letter-spacing: 0.8px;
+  border: none;
+}
+
+.crp-custom-table th:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.crp-custom-table th:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Filas de la Tabla (Tarjetas Amarillas) */
+.crp-custom-table tbody tr {
+  background-color: #f4be18; /* Amarillo vibrante de la imagen */
+  color: #000000; /* Texto oscuro para máxima legibilidad */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.crp-custom-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 190, 24, 0.25);
+}
+
+.crp-custom-table td {
+  padding: 16px 18px;
+  font-size: 0.9rem;
+  vertical-align: middle;
+  border: none;
+}
+
+.crp-custom-table td strong {
+  font-weight: 700;
+  color: #000000;
+}
+
+.crp-custom-table td code {
+  font-family: var(--font-main);
+  font-weight: 700;
+  background: transparent;
+  color: #000000;
+}
+
+.crp-custom-table td:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.crp-custom-table td:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Badges / Etiquetas de Disciplina */
+.crp-badge {
+  font-weight: 700;
+  color: #000000;
+}
+
+/* Controles de Paginación */
+.crp-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.crp-pagination button {
+  background-color: var(--primary-gold);
+  color: #000000;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 18px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s, opacity 0.3s;
+}
+
+.crp-pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.crp-pagination button:not(:disabled):hover {
+  background-color: #dca30e;
+}
+
+.crp-page-indicator, #crpPageIndicator {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ==========================================
    ALIADOS Y CLIENTES (LOGOS)
    ========================================== */
 .logos-flex {
