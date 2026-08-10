@@ -667,7 +667,7 @@ a {
 }
 
 .logos-flex img {
-  max-height: 200px;
+  max-height: 200px; 
   width: auto;
   /* max-width: 200px; */
   object-fit: contain;
