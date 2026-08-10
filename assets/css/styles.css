@@ -273,58 +273,116 @@ a {
 }
 
 /* ==========================================
-   LÍNEAS DE SERVICIO
+   LÍNEAS DE SERVICIO (DISEÑO EXACTO REFERENCIA)
    ========================================== */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
+.services-section {
+  padding-top: 50px;
+  padding-bottom: 70px;
 }
 
-.service-card {
-  background: var(--bg-card);
+.services-title-block {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.services-title-block .section-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.services-title-block .section-subtitle {
+  color: var(--primary-gold, #f4be18);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: block;
+}
+
+/* Grid de 2 columnas x 2 filas */
+.services-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Tarjeta Amarilla Estilo Cliente */
+.service-card-yellow {
+  position: relative;
+  background: linear-gradient(180deg, #f4be18 0%, #d89e08 100%);
   padding: 35px 30px;
-  border-radius: 10px;
+  border-radius: 0; /* Bordes rectos como la referencia */
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 220px;
-  transition: transform 0.3s, border-color 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(244, 190, 24, 0.3);
-}
-
-.service-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.service-card h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.3;
-  flex: 1;
-}
-
-.service-num {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--primary-gold);
+/* Número transparente en la esquina superior derecha */
+.service-num-overlay {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.15);
   line-height: 1;
-  opacity: 0.9;
+  pointer-events: none;
 }
 
-.service-card p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+.service-card-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 1.25;
+  margin-bottom: 15px;
+  padding-right: 50px; /* Evita superponerse con el número */
+}
+
+.service-card-lead {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #000000;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.service-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.service-list li {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #0d1117;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.service-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* Adaptabilidad para teléfonos */
+@media (max-width: 768px) {
+  .services-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================
