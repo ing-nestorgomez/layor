@@ -253,9 +253,9 @@ a {
 .widget-item {
   background: #ffffff;
   border-radius: 6px;
-  overflow: hidden;
+  overflow: hidden; /*
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e2e8f0; */
   display: flex;
   justify-content: center;
 }
