@@ -1,11 +1,12 @@
 /* ==========================================
-   RESET & VARIABLES GLOBALES
+   RESET & VARIABLES GLOBALES (FONDO CLARO GENERAL)
    ========================================== */
 :root {
   --primary-gold: #f4be18;
-  --bg-dark: #0f131a;
-  --text-light: #ffffff;
-  --text-muted: #a0aec0;
+  --bg-dark: #ffffff;          /* Fondo blanco para las secciones del sitio */
+  --bg-card: #f8f9fa;          /* Fondo claro para tarjetas */
+  --text-light: #12151c;        /* Texto principal oscuro */
+  --text-muted: #4a5568;        /* Texto secundario gris */
   --font-main: 'Poppins', sans-serif;
 }
 
@@ -17,8 +18,8 @@
 
 body {
   font-family: var(--font-main);
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: #ffffff;    /* Asegura fondo claro en todo el sitio */
+  color: #12151c;
   line-height: 1.6;
 }
 
@@ -28,56 +29,67 @@ a {
 }
 
 /* ==========================================
-   HEADER & NAVEGACIÓN
+   HEADER & NAVEGACIÓN (DISEÑO EXACTO REFERENCIA)
    ========================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #0f131a;
+  background-color: #0d1117;   /* Fondo oscuro exclusivo para la barra superior */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 18px 5%;
+  padding: 16px 5%;
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
+  gap: 20px;
 }
 
+/* Logo más grande como la referencia */
 .site-logo img {
-  height: 48px;
+  height: 62px;               /* Incrementado para mayor visibilidad */
+  width: auto;
   display: block;
+}
+
+/* Menú empujado hacia la derecha antes del botón */
+.header-container nav {
+  margin-left: auto;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 35px;
+  gap: 30px;
+  align-items: center;
 }
 
+/* Todos los enlaces en color amarillo/dorado corporativo */
 .nav-menu a {
   font-size: 0.95rem;
-  font-weight: 600;
-  color: #ffffff;
-  transition: color 0.3s;
+  font-weight: 700;
+  color: var(--primary-gold); /* Todos amarillos según referencia */
+  transition: opacity 0.2s;
 }
 
-.nav-menu a.active,
 .nav-menu a:hover {
-  color: var(--primary-gold);
+  opacity: 0.8;
 }
 
+/* Botón Contáctanos */
 .btn-header-contact {
   background-color: var(--primary-gold);
   color: #000000;
-  padding: 10px 26px;
-  border-radius: 22px;
-  font-weight: 700;
+  padding: 10px 28px;
+  border-radius: 25px;
+  font-weight: 800;
   font-size: 0.9rem;
   transition: transform 0.2s, background 0.3s;
+  white-space: nowrap;
 }
 
 .btn-header-contact:hover {
@@ -86,7 +98,7 @@ a {
 }
 
 /* ==========================================
-   HERO SECTION (AJUSTADO AL DISEÑO SOLICITADO)
+   HERO SECTION
    ========================================== */
 .hero-section {
   position: relative;
@@ -99,14 +111,13 @@ a {
   padding: 60px 20px;
 }
 
-/* Overlay suave para mantener los tonos cálidos/rojizos del fondo */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.25); /* Overlay liviano para conservar colores cálidos */
 }
 
 .hero-content {
@@ -128,7 +139,7 @@ a {
 .hero-title {
   font-size: 3.8rem;
   font-weight: 900;
-  color: #ffffff; /* Blanco brillante e intachable */
+  color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 25px;
   letter-spacing: 1px;
@@ -136,12 +147,11 @@ a {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Botón con las esquinas suavizadas exactas de la imagen 1 */
 .btn-hero {
   background-color: var(--primary-gold);
   color: #000000;
   padding: 12px 28px;
-  border-radius: 8px; /* Cambiado de 25px a 8px para coincidir con la imagen 1 */
+  border-radius: 8px;
   font-weight: 800;
   font-size: 0.95rem;
   display: inline-block;
