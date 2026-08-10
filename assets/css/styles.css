@@ -667,9 +667,9 @@ a {
 }
 
 .logos-flex img {
-  max-height: 60px;
+  max-height: 200px;
   width: auto;
-  max-width: 200px;
+  /* max-width: 200px; */
   object-fit: contain;
   /* Se remueve brightness(0) invert(1) para evitar que los logos blancos desaparezcan en fondo blanco */
   filter: grayscale(100%) opacity(0.6);
