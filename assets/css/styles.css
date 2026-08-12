@@ -334,6 +334,10 @@ a {
   padding-right: 50px;
 }
 
+.service-card-yellow-title{
+  max-width: 400px;
+}
+
 .service-card-lead {
   font-weight: 700;
   font-size: 0.92rem;
