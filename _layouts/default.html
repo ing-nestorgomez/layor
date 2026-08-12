@@ -27,5 +27,17 @@
 
   {% include footer.html %}
 
+  <!-- Script para menu hamburguesa -->
+  <script>
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const navMenu = document.querySelector('.header-container nav');
+
+  if (menuBtn && navMenu) {
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('is-active');
+      navMenu.classList.toggle('nav-active');
+    });
+  }
+</script>
 </body>
 </html>
