@@ -4,14 +4,22 @@
       <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Caribe Royal Petrol C.A.">
     </a>
 
+    <!-- Botón Hamburguesa para Móviles -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <nav>
       <ul class="nav-menu">
         <li><a href="{{ '/' | relative_url }}" class="active">Inicio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#servicios">Servicios</a></li>
+        <li class="nav-btn-item">
+          <a href="#contacto" class="btn-header-contact">Contáctanos</a>
+        </li>
       </ul>
     </nav>
-
-    <a href="#contacto" class="btn-header-contact">Contáctanos</a>
   </div>
 </header>
