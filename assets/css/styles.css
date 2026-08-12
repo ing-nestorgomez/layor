@@ -621,8 +621,9 @@ a {
 }
 
 /* ==========================================
-   ALIADOS Y CLIENTES (ESTILO REFERENCIA CLIENTE)
+   ALIADOS Y CLIENTES (CON CARRUSEL CONTINUO)
    ========================================== */
+/* 1. SE MANTIENEN LOS ESTILOS DE LA SECCIÓN Y ENCABEZADO */
 .clients-section {
   text-align: center;
   padding: 60px 20px;
@@ -652,31 +653,71 @@ a {
   display: block;
 }
 
-.logos-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 45px;
-  margin-top: 20px;
-  padding: 10px 0;
+/* 2. REEMPLAZO DE .logos-flex POR EL NUEVO CARRUSEL */
+.logos-slider {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  position: relative;
 }
 
-.logos-flex img {
-  max-height: 200px; 
+/* Sombras en los bordes para suavizar la entrada/salida de los logos */
+.logos-slider::before,
+.logos-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logos-slider::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), transparent);
+}
+
+.logos-slider::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), transparent);
+}
+
+.logos-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: max-content;
+  animation: scrollLogos 20s linear infinite;
+}
+
+/* Pausa la animación al colocar el cursor encima */
+.logos-slider:hover .logos-track {
+  animation-play-state: paused;
+}
+
+.logos-track img {
+  max-height: 55px;
   width: auto;
-  /* max-width: 200px; */
+  max-width: 200px;
   object-fit: contain;
-  /* Se remueve brightness(0) invert(1) para evitar que los logos blancos desaparezcan en fondo blanco */
-  filter: grayscale(100%) opacity(0.6);
+  filter: brightness(0) opacity(0.55);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.logos-flex img:hover {
-  filter: grayscale(0%) opacity(1);
-  transform: scale(1.05);
+.logos-track img:hover {
+  filter: brightness(0) opacity(0.9);
+  transform: scale(1.08);
 }
 
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 /* ==========================================
    FOOTER
    ========================================== */
