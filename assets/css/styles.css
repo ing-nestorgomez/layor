@@ -697,7 +697,7 @@ a {
 }
 
 .logos-track img {
-  max-height: 55px;
+  max-height: 150px;
   width: auto;
   max-width: 200px;
   object-fit: contain;
