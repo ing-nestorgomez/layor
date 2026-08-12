@@ -1,3 +1,13 @@
+/* Previene scroll horizontal indeseado en todo el sitio */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* ==========================================
    RESET & VARIABLES GLOBALES (FONDO CLARO GENERAL)
    ========================================== */
@@ -818,6 +828,20 @@ a {
   /* --- SERVICIOS Y GALERÍA --- */
   .services-grid-2x2 {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Corrección para que las tarjetas amarillas no se salgan por la derecha */
+  .service-card,
+  .services-grid-2x2 > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow: hidden !important; /* Mantiene la marca de agua y el contenido dentro de la tarjeta */
   }
 
   .gallery-grid-pdf {
