@@ -697,7 +697,7 @@ a {
 
 .footer-bottom {
   text-align: center;
-  color: var(--text-muted);
+  color: #bec3cc;
   font-size: 0.85rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 25px;
