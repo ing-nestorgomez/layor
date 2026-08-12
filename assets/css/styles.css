@@ -123,20 +123,20 @@ a {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 750px; /* Ancho que obliga al texto a romper en 2 líneas exactamente */
+  max-width: 620px; /* Ancho que obliga al texto a romper en 2 líneas exactamente */
   padding-bottom: 20px;
 }
 
 .hero-title {
-  /* clamp(tamaño_minimo, tamaño_ideal, tamaño_maximo) para excelente adaptabilidad */
-  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  /* Tamaño reducido: mínimo 1.8rem, ideal 3.8vw, máximo 3.1rem */
+  font-size: clamp(1.8rem, 3.8vw, 3.1rem);
   font-weight: 900;
-  font-style: italic; /* Opcional: agrega el estilo inclinado de la captura */
-  color: var(--primary-gold, #f4be18); /* Color amarillo principal */
+  font-style: normal; /* Texto recto (sin cursiva) */
+  color: var(--primary-gold, #f4be18);
   text-transform: uppercase;
   margin: 0;
   letter-spacing: 0.5px;
-  line-height: 1.1;
+  line-height: 1.15;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
