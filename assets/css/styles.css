@@ -813,16 +813,22 @@ a {
     justify-content: center;
     align-items: flex-end;
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 15px; /* Reducimos padding lateral para dar más espacio al texto */
+    overflow: hidden;
   }
 
   .hero-content {
     max-width: 100%;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .hero-title {
-    font-size: 2.2rem;
-    line-height: 1.2;
+    font-size: 1.65rem !important; /* Disminuimos el tamaño para que encaje la palabra completa */
+    line-height: 1.25;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto; /* Permite dividir con guión si la pantalla es excesivamente estrecha */
   }
 
   /* --- SERVICIOS Y GALERÍA --- */
@@ -870,7 +876,11 @@ a {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* Ajuste para pantallas muy estrechas */
+  .hero-title {
+    font-size: 1.45rem !important; 
+  }
+  
   .gallery-grid-pdf img {
     width: 100%;
     height: 220px;
