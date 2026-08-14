@@ -164,7 +164,7 @@ a {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 620px; /* Ancho que obliga al texto a romper en 2 líneas exactamente */
+  max-width: 750px; /* Ancho que obliga al texto a romper en 2 líneas exactamente */
   padding-bottom: 20px;
 }
 
