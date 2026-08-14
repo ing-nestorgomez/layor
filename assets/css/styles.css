@@ -624,6 +624,8 @@ a {
   text-transform: uppercase;
   margin-bottom: 8px;
   letter-spacing: 0.5px;
+  max-width: 700px;
+  margin: 0 auto 8px auto;
 }
 
 .clients-header .section-subtitle {
