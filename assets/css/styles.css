@@ -689,6 +689,12 @@ a {
   transform: scale(1.08);
 }
 
+/* Incrementa solo el logo de Chevron */
+.logos-track img.logo-chevron {
+  max-height: 180px; /* Incrementa el max-height relativo al general de 150px */
+  transform: scale(1.25); /* Opcional: para agrandarlo proporcionalmente sin alterar el layout */
+}
+
 @keyframes scrollLogos {
   0% {
     transform: translateX(0);
