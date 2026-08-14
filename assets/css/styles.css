@@ -169,10 +169,10 @@ a {
 }
 
 .hero-title {
-  font-size: clamp(1.8rem, 3.8vw, 3.1rem);
+  font-size: clamp(0.8rem, 1.8vw, 2.1rem);
   font-weight: 900;
   font-style: normal;
-  color: var(--primary-gold, #f4be18);
+  color: #ffffff;
   text-transform: uppercase;
   margin: 0;
   letter-spacing: 0.5px;
