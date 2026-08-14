@@ -693,6 +693,8 @@ a {
 .logos-track img.logo-chevron {
   max-height: 180px; /* Incrementa el max-height relativo al general de 150px */
   transform: scale(1.25); /* Opcional: para agrandarlo proporcionalmente sin alterar el layout */
+  margin-left: -50px;
+  margin-right: -50px;
 }
 
 @keyframes scrollLogos {
