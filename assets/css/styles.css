@@ -143,7 +143,7 @@ a {
 .hero-section {
   position: relative;
   min-height: 80vh;
-  background: url('../images/portada.png') center/cover no-repeat;
+  background: url('../images/portada2.jpg') center/cover no-repeat;
   display: flex;
   align-items: flex-end;      /* Alinea el contenido en la parte inferior */
   justify-content: flex-end;  /* Alinea el contenido a la derecha */
