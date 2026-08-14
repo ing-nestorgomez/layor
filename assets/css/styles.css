@@ -173,7 +173,7 @@ a {
   font-weight: 900;
   font-style: normal;
   color: #ffffff;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin: 0;
   letter-spacing: 0.5px;
   line-height: 1.15;
